@@ -1,7 +1,7 @@
 # CTShowcase
 
 [![CI Status](http://img.shields.io/travis/scihant/CTShowcase.svg?style=flat)](https://travis-ci.org/scihant/CTShowcase)
-[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/CTShowcase.svg)](https://img.shields.io/cocoapods/v/CTShowcase.svg)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/CTShowcase.svg)](https://img.shields.io/cocoapods/v/CTShowcase.svg)
 [![Issues](https://img.shields.io/github/issues/scihant/CTShowcase.svg?style=flat)](http://www.github.com/scihant/CTShowcase/issues?state=open)
 
 CTShowcase is a showcase library for iOS that lets you to highlight individual views in your app using static or dynamic effects.

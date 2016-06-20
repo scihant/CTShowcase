@@ -12,7 +12,7 @@ CTShowcase is a showcase library for iOS that lets you to highlight individual v
 
 You can install CTShowcase using [CocoaPods](http://cocoapods.org). To install it,  add the following line to your Podfile:
 
-    pod "iShowcase", "~> 1.0"
+    pod "CTShowcase", "~> 1.0"
 
 #### Manual Install
 

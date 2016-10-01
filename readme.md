@@ -6,22 +6,22 @@
 
 CTShowcase is a showcase library for iOS that lets you to highlight individual views in your app using static or dynamic effects.
 
-## Installation
-
 ### Compatibility
 
 CTShowcase can be used both from Objective-C and Swift code.
 
 v1.0 supports the Swift 2.2 syntax.
-v1.1+ requires Swift 3
+v2.0+ requires Swift 3
 
 This document shows examples using the latest version of the library.
+
+## Installation
 
 #### Using CocoaPods
 
 You can install CTShowcase using [CocoaPods](http://cocoapods.org). To install it,  add the following line to your Podfile:
 
-    pod "CTShowcase", "~> 1.1"
+    pod "CTShowcase", "~> 2.0"
 
 #### Manual Install
 
@@ -109,13 +109,13 @@ highlighter.highlightColor = UIColor.yellow
 showcase.setupShowcase(for: self.button, offset: CGPointZero, margin: 5)
 showcase.show()
 ```
-The result will look like this:ön
+The result will look like this:
 
 ![Static Highlight](https://s3.amazonaws.com/tek-files/static.png)
 
 ###CTDynamicGlowHighlighter
 
-This is the animated version of the static highlighter. In order to use it, create an instance and set it as the highlighter of your `CTShowcaseView` instance 
+This is the animated version of the static highlighter. In order to use it, create an instance and set it as the highlighter of your `CTShowcaseView` instance.
 
 ```swift
 let showcase = CTShowcaseView(title: "New Feature", message: "Here's a brand new button you can tap!")
@@ -139,13 +139,13 @@ The resulting effect will look like this:
 
 ![Dynamic Rectangular Highlight](https://s3.amazonaws.com/tek-files/dynamic_rect.gif)
 
-If you set its type to circular 
+If you set its type to circular
 
 ```swift
 highlighter.highlightType = .Circle
 ```
 
-You'll end up with a circular highlight as shown below
+You'll end up with a circular highlight as shown below:
 
 ![Dynamic Circular Highlight](https://s3.amazonaws.com/tek-files/dynamic_circle.gif)
 

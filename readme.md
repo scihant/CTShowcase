@@ -8,11 +8,20 @@ CTShowcase is a showcase library for iOS that lets you to highlight individual v
 
 ## Installation
 
+### Compatibility
+
+CTShowcase can be used both from Objective-C and Swift code.
+
+v1.0 supports the Swift 2.2 syntax.
+v1.1+ requires Swift 3
+
+This document shows examples using the latest version of the library.
+
 #### Using CocoaPods
 
 You can install CTShowcase using [CocoaPods](http://cocoapods.org). To install it,  add the following line to your Podfile:
 
-    pod "CTShowcase", "~> 1.0"
+    pod "CTShowcase", "~> 1.1"
 
 #### Manual Install
 
@@ -33,7 +42,7 @@ The usage of CTShowcase is very simple.
 Create an instance of `CTShowcaseView`
 
 ```swift
-let showcase = CTShowcaseView(withTitle: "New Feature", message: "Here's a brand new button you can tap!", key: @"displayed") { () -> Void in
+let showcase = CTShowcaseView(title: "New Feature", message: "Here's a brand new button you can tap!", key: @"displayed") { () -> () in
                 print("This closure will be executed after the user dismisses the showcase")
             }
 ```
@@ -41,7 +50,7 @@ let showcase = CTShowcaseView(withTitle: "New Feature", message: "Here's a brand
 Setup the showcase for a view available in your layout
 
 ```swift
-showcase.setupShowcaseForView(newButton)
+showcase.setupShowcase(for: newButton)
 ```
 
 and finally, show the showcase
@@ -59,13 +68,13 @@ You can dismiss the showcase by tapping anywhere on it.
 Or you can simply use the provided convenience initializer:
 
 ```swift
-let showcase = CTShowcaseView(withTitle: "New Feature", message: "Here's a brand new button you can tap!")
+let showcase = CTShowcaseView(title: "New Feature", message: "Here's a brand new button you can tap!")
 ```
 
-You can optionally give an offset and margin value when setting up a showcase by using the following method instead of `setupShowcaseForView(_:)`
+You can optionally give an offset and margin value when setting up a showcase by using the following method instead of `setupShowcase(for:)`
 
 ```swift
-showcase.setupShowcaseForView(self.button, offset: CGPointZero, margin: 5)
+showcase.setupShowcase(for: self.button, offset: CGPointZero, margin: 5)
 ```
 
 Offset will determine how much the highlight will be shifted relative to the location of the target view.
@@ -77,8 +86,8 @@ Margin determines the spacing between the borders of the target view and the ins
 Therefore you can set their properties such as the font or color by accessing them directly.
 
 ```swift
-showcase.titleLabel.font = boldSystemFontOfSize(15)
-showcase.messageLabel.textColor = UIColor.yellowColor()
+showcase.titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
+showcase.messageLabel.textColor = UIColor.yellow
 ```
 
 `CTShowcaseView` uses an instance of a class conforming to the `CTRegionHighlighter` protocol to draw its highlight.
@@ -91,13 +100,13 @@ This is the default highlighter used by the `CTShowcaseView`. It draws non-anima
 You can customize its properties before setting up the showcase if you don't like their defaults.
 
 ```swift
-let showcase = CTShowcaseView(withTitle: "New Feature", message: "Here's a brand new button you can tap!")
+let showcase = CTShowcaseView(title: "New Feature", message: "Here's a brand new button you can tap!")
 
 let highlighter = showcase.highlighter as! CTStaticGlowHighlighter
 
-highlighter.highlightColor = UIColor.yellowColor()
+highlighter.highlightColor = UIColor.yellow
 
-showcase.setupShowcaseForView(self.button, offset: CGPointZero, margin: 5)
+showcase.setupShowcase(for: self.button, offset: CGPointZero, margin: 5)
 showcase.show()
 ```
 The result will look like this:ön
@@ -109,12 +118,12 @@ The result will look like this:ön
 This is the animated version of the static highlighter. In order to use it, create an instance and set it as the highlighter of your `CTShowcaseView` instance 
 
 ```swift
-let showcase = CTShowcaseView(withTitle: "New Feature", message: "Here's a brand new button you can tap!")
+let showcase = CTShowcaseView(title: "New Feature", message: "Here's a brand new button you can tap!")
 
 let highlighter = CTDynamicGlowHighlighter()
 
 // Configure its parameters if you don't like the defaults
-highlighter.highlightColor = UIColor.yellowColor()
+highlighter.highlightColor = UIColor.yellow
 highlighter.animDuration = 0.5
 highlighter.glowSize = 5
 highlighter.maxOffset = 10
@@ -122,7 +131,7 @@ highlighter.maxOffset = 10
 // Set it as the highlighter
 showcase.highlighter = highlighter
 
-showcase.setupShowcaseForView(self.button)
+showcase.setupShowcase(for: self.button)
 showcase.show()
 ```
 
@@ -144,4 +153,4 @@ You'll end up with a circular highlight as shown below
 
 The classes provided with CTShowcase should be sufficient for most applications, but in case you want to add different highlight effects, that's easy to do as well.
 
-Just create a new class conforming to the `CTRegionHighlighter` protocol and use it as the highlighter of the `CTShowcaseView` instance. Check the comments in the code to find out what the `drawOnContext(_:targetRect)` and  `layerForRect(_:)` methods in the protocol should do.
+Just create a new class conforming to the `CTRegionHighlighter` protocol and use it as the highlighter of the `CTShowcaseView` instance. Check the comments in the code to find out what the `draw(on:targetRect:)` and  `layer(for:targetRect:)` methods in the protocol should do.

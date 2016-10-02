@@ -40,6 +40,8 @@ import UIKit
     private var targetMargin: CGFloat = 0
     private var effectLayer : CALayer?
     
+    private var previousSize = CGSize.zero
+    
     // MARK: Class lifecyle
     
     /**
@@ -254,10 +256,15 @@ import UIKit
     
     override public func layoutSubviews() {
         super.layoutSubviews()
+        
+        // Don't do anything unless the bounds have changed
+        guard bounds.size.width != previousSize.width || bounds.size.height != previousSize.height else { return }
+        
         if let targetView = targetView {
             setupShowcase(for: targetView)
             setNeedsDisplay()
         }
+        previousSize = bounds.size
     }
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

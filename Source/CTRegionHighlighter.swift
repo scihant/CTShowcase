@@ -69,7 +69,7 @@ import UIKit
             let radius = maxDim/2 + 1;
             let center = CGPoint(x: rect.midX, y: rect.midY)
             context.setBlendMode(.clear)
-            context.addArc(center: center, radius: radius, startAngle: 0, endAngle: .pi, clockwise: true)
+            context.addArc(center: center, radius: radius, startAngle: 0, endAngle: .pi * 2, clockwise: true)
             context.fillPath()
             context.setBlendMode(.normal)
         }

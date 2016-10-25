@@ -105,6 +105,7 @@ import UIKit
     }
 
     deinit {
+        targetView?.removeObserver(self, forKeyPath: "frame")
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -136,6 +137,14 @@ import UIKit
         messageLabel.frame = messageRegion
 
         updateEffectLayer()
+        setNeedsDisplay()
+        
+        // If the frame of the targetView changes, the showcase needs to be updated accordingly
+        targetView.addObserver(self, forKeyPath: "frame", options: .init(rawValue: 0), context: nil)
+    }
+
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        setupShowcase(for: targetView!, offset: targetOffset, margin: targetMargin)
     }
     
     /**

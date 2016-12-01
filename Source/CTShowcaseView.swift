@@ -26,7 +26,7 @@ import UIKit
     // Highlighter object that creates the highlighting effect
     public var highlighter: CTRegionHighlighter = CTStaticGlowHighlighter()
     
-    private let containerView: UIView = (UIApplication.shared.delegate!.window!)!
+    private let containerView: UIView = UIApplication.shared.keyWindow!
     private var targetView: UIView?
     private var targetRect: CGRect = CGRect.zero
     
@@ -41,6 +41,7 @@ import UIKit
     private var effectLayer : CALayer?
     
     private var previousSize = CGSize.zero
+    private var observing = false
     
     // MARK: Class lifecyle
     
@@ -67,17 +68,18 @@ import UIKit
         titleLabel = UILabel(frame: CGRect.zero)
         messageLabel = UILabel(frame: CGRect.zero)
 
+        super.init(frame: CGRect.zero)
+        
         if let storageKey = key, let _ = UserDefaults.standard.object(forKey: storageKey) {
             willShow = false
+            return
         }
-        
+    
         self.title = title
         self.message = message
         self.key = key
         self.dismissHandler = dismissHandler
         
-        super.init(frame: CGRect.zero)
-    
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         
@@ -105,7 +107,9 @@ import UIKit
     }
 
     deinit {
-        targetView?.removeObserver(self, forKeyPath: "frame")
+        if observing {
+            targetView?.removeObserver(self, forKeyPath: "frame")
+        }
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -120,7 +124,8 @@ import UIKit
     */
     @objc(setupShowcaseForView:offset:margin:)
     public func setupShowcase(for view: UIView, offset: CGPoint, margin: CGFloat) {
-    
+        guard willShow == true else {return}
+        
         targetView = view
         targetOffset = offset
         targetMargin = margin
@@ -131,6 +136,16 @@ import UIKit
         targetRect = targetRect.offsetBy(dx: offset.x, dy: offset.y)
         targetRect = targetRect.insetBy(dx: -margin, dy: -margin)
         
+        // If less than %75 of the target area is inside the container, dismiss the showcase automatically
+        let overlapRegion = containerView.bounds.intersection(targetRect)
+        let overlapSize = overlapRegion.width * overlapRegion.height
+        let targetSize = targetRect.width * targetRect.height
+        
+        if overlapSize/targetSize < 0.75 {
+            dismiss()
+            return
+        }
+        
         let (titleRegion, messageRegion) = textRegionsForHighlightedRect(targetRect)
         
         titleLabel.frame = titleRegion
@@ -140,7 +155,10 @@ import UIKit
         setNeedsDisplay()
         
         // If the frame of the targetView changes, the showcase needs to be updated accordingly
-        targetView.addObserver(self, forKeyPath: "frame", options: .init(rawValue: 0), context: nil)
+        if !observing {
+            targetView.addObserver(self, forKeyPath: "frame", options: .init(rawValue: 0), context: nil)
+            observing = true
+        }
     }
 
     public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -184,10 +202,7 @@ import UIKit
     
     /// Displays the showcase. The showcase needs to be setup before calling this method using one of the setupShowcase methods
     public func show() {
-        
-        if (!willShow) {
-            return
-        }
+        guard willShow == true else {return}
         
         containerView.addSubview(self)
         
@@ -247,10 +262,17 @@ import UIKit
         let titleRegion = CGRect(x: margin, y: originY, width: textRegionWidth, height: titleSize.height)
         let messageRegion = CGRect(x: margin, y: originY + spacingBetweenTitleAndText + titleSize.height, width: textRegionWidth, height: messageSize.height)
    
-    
         return (titleRegion, messageRegion)
     }
     
+    private func dismiss() {
+        UIView.animate(withDuration: CTGlobalConstants.DefaultAnimationDuration, animations: { () -> Void in
+            self.alpha = 0
+        }, completion: { (finished) -> Void in
+            self.removeFromSuperview()
+            self.dismissHandler?()
+        })
+    }
     
     // MARK: Overridden methods
     
@@ -277,12 +299,7 @@ import UIKit
     }
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: CTGlobalConstants.DefaultAnimationDuration, animations: { () -> Void in
-            self.alpha = 0
-            }, completion: { (finished) -> Void in
-                self.removeFromSuperview()
-                self.dismissHandler?()
-        })
+        dismiss()
     }
     
     // MARK: Notification handler

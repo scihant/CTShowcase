@@ -122,8 +122,8 @@ import UIKit
     - parameter offset: The offset to apply to the highlight relative to the views location
     - parameter margin: Distance between the highlight border and the view
     */
-    @objc(setupShowcaseForView:offset:margin:)
-    public func setupShowcase(for view: UIView, offset: CGPoint, margin: CGFloat) {
+    @objc(setupForView:offset:margin:)
+    public func setup(for view: UIView, offset: CGPoint, margin: CGFloat) {
         guard willShow == true else {return}
         
         targetView = view
@@ -162,7 +162,7 @@ import UIKit
     }
 
     public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        setupShowcase(for: targetView!, offset: targetOffset, margin: targetMargin)
+        setup(for: targetView!, offset: targetOffset, margin: targetMargin)
     }
     
     /**
@@ -170,9 +170,9 @@ import UIKit
      
     - parameter view: View to highlight
     */
-    @objc(setupShowcaseForView:)
-    public func setupShowcase(for view: UIView) {
-        setupShowcase(for: view, offset: targetOffset, margin: targetMargin)
+    @objc(setupForView:)
+    public func setup(for view: UIView) {
+        setup(for: view, offset: targetOffset, margin: targetMargin)
     }
     
     /**
@@ -182,10 +182,10 @@ import UIKit
      - parameter offset: The offset to apply to the highlight relative to the views location
      - parameter margin: Distance between the highlight border and the view
      */
-    @objc(setupShowcaseForBarButtonItem:offset:margin:)
-    public func setupShowcase(for barButtonItem: UIBarButtonItem, offset: CGPoint, margin: CGFloat) {
+    @objc(setupForBarButtonItem:offset:margin:)
+    public func setup(for barButtonItem: UIBarButtonItem, offset: CGPoint, margin: CGFloat) {
         if let view = barButtonItem.value(forKey: "view") as? UIView {
-            setupShowcase(for: view, offset: offset, margin: margin)
+            setup(for: view, offset: offset, margin: margin)
         }
     }
     
@@ -194,13 +194,13 @@ import UIKit
      
     - parameter barButtonItem: UIBarButtonItem to highlight
     */
-    @objc(setupShowcaseForBarButtonItem:)
-    public func setupShowcase(for barButtonItem: UIBarButtonItem) {
-        setupShowcase(for: barButtonItem, offset: targetOffset, margin: targetMargin)
+    @objc(setupForBarButtonItem:)
+    public func setup(for barButtonItem: UIBarButtonItem) {
+        setup(for: barButtonItem, offset: targetOffset, margin: targetMargin)
     }
     
     
-    /// Displays the showcase. The showcase needs to be setup before calling this method using one of the setupShowcase methods
+    /// Displays the showcase. The showcase needs to be setup before calling this method using one of the setup methods
     public func show() {
         guard willShow == true else {return}
         
@@ -292,7 +292,7 @@ import UIKit
         guard bounds.size.width != previousSize.width || bounds.size.height != previousSize.height else { return }
         
         if let targetView = targetView {
-            setupShowcase(for: targetView)
+            setup(for: targetView)
             setNeedsDisplay()
         }
         previousSize = bounds.size

@@ -2,6 +2,7 @@
 
 [![CI Status](http://img.shields.io/travis/scihant/CTShowcase.svg?style=flat)](https://travis-ci.org/scihant/CTShowcase)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/CTShowcase.svg)](https://img.shields.io/cocoapods/v/CTShowcase.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Issues](https://img.shields.io/github/issues/scihant/CTShowcase.svg?style=flat)](http://www.github.com/scihant/CTShowcase/issues?state=open)
 
 CTShowcase is a showcase library for iOS that lets you to highlight individual views in your app using static or dynamic effects.
@@ -17,11 +18,21 @@ This document shows examples using the latest version of the library.
 
 ## Installation
 
+#### Using Carthage
+
+To install CTShowcase using [Carthage](https://github.com/Carthage/Carthage), add the folowing line into your Cartfile:
+
+	github "CTShowcase/CTShowcase" ~> 2.1
+
+Then run the `carthage update` command to build the framework and drag the built `CTShowcase.framework` into your XCode project.
+
 #### Using CocoaPods
 
-You can install CTShowcase using [CocoaPods](http://cocoapods.org). To install it,  add the following line to your Podfile:
+To install CTShowcase using [CocoaPods](http://cocoapods.org), add the following line into your Podfile:
 
-    pod "CTShowcase", "~> 2.0"
+    pod "CTShowcase", "~> 2.1"
+
+Then run the `pod install` command and use the created workspace to open your project from now on.  
 
 #### Manual Install
 
@@ -29,11 +40,7 @@ Just add the files `CTShowcaseView.swift` and `CTRegionHighlighter.swift` to you
 
 #### Running the Example project
 
-Navigate to the Example directory and type: 
-	
-	pod install
-
-Then you can use the .workspace file to open and run the example. 
+The example project is located in the Example directory. The framework target is already added as a dependency to it therefore you can run it directly. 
 
 ## Usage
 
@@ -50,7 +57,7 @@ let showcase = CTShowcaseView(title: "New Feature", message: "Here's a brand new
 Setup the showcase for a view available in your layout
 
 ```swift
-showcase.setupShowcase(for: newButton)
+showcase.setup(for: newButton)
 ```
 
 and finally, show the showcase
@@ -71,10 +78,10 @@ Or you can simply use the provided convenience initializer:
 let showcase = CTShowcaseView(title: "New Feature", message: "Here's a brand new button you can tap!")
 ```
 
-You can optionally give an offset and margin value when setting up a showcase by using the following method instead of `setupShowcase(for:)`
+You can optionally give an offset and margin value when setting up a showcase by using the following method instead of `setup(for:)`
 
 ```swift
-showcase.setupShowcase(for: self.button, offset: CGPointZero, margin: 5)
+showcase.setup(for: self.button, offset: CGPointZero, margin: 5)
 ```
 
 Offset will determine how much the highlight will be shifted relative to the location of the target view.
@@ -106,7 +113,7 @@ let highlighter = showcase.highlighter as! CTStaticGlowHighlighter
 
 highlighter.highlightColor = UIColor.yellow
 
-showcase.setupShowcase(for: self.button, offset: CGPointZero, margin: 5)
+showcase.setup(for: self.button, offset: CGPointZero, margin: 5)
 showcase.show()
 ```
 The result will look like this:
@@ -131,7 +138,7 @@ highlighter.maxOffset = 10
 // Set it as the highlighter
 showcase.highlighter = highlighter
 
-showcase.setupShowcase(for: self.button)
+showcase.setup(for: self.button)
 showcase.show()
 ```
 

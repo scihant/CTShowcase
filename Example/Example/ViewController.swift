@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         
         showcase.highlighter = highlighter
         
-        showcase.setupShowcase(for: self.button, offset: CGPoint.zero, margin: 0)
+        showcase.setup(for: self.button, offset: CGPoint.zero, margin: 0)
         showcase.show()
     }
 }

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CF1493F71C317BBC00571C47"
-               BuildableName = "Example.app"
-               BlueprintName = "Example"
-               ReferencedContainer = "container:Example.xcodeproj">
+               BlueprintIdentifier = "CFF528571E472412008ED7E6"
+               BuildableName = "CTShowcase.framework"
+               BlueprintName = "CTShowcase"
+               ReferencedContainer = "container:CTShowcase.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CF1493F71C317BBC00571C47"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
-            ReferencedContainer = "container:Example.xcodeproj">
+            BlueprintIdentifier = "CFF528571E472412008ED7E6"
+            BuildableName = "CTShowcase.framework"
+            BlueprintName = "CTShowcase"
+            ReferencedContainer = "container:CTShowcase.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -51,16 +51,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CF1493F71C317BBC00571C47"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
-            ReferencedContainer = "container:Example.xcodeproj">
+            BlueprintIdentifier = "CFF528571E472412008ED7E6"
+            BuildableName = "CTShowcase.framework"
+            BlueprintName = "CTShowcase"
+            ReferencedContainer = "container:CTShowcase.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +69,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CF1493F71C317BBC00571C47"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
-            ReferencedContainer = "container:Example.xcodeproj">
+            BlueprintIdentifier = "CFF528571E472412008ED7E6"
+            BuildableName = "CTShowcase.framework"
+            BlueprintName = "CTShowcase"
+            ReferencedContainer = "container:CTShowcase.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -223,6 +223,15 @@ import UIKit
             UserDefaults.standard.synchronize()
         }
     }
+    
+    public func dismiss() {
+        UIView.animate(withDuration: CTGlobalConstants.DefaultAnimationDuration, animations: { () -> Void in
+            self.alpha = 0
+        }, completion: { (finished) -> Void in
+            self.removeFromSuperview()
+            self.dismissHandler?()
+        })
+    }
 
     // MARK: Private methods
     
@@ -263,15 +272,6 @@ import UIKit
         let messageRegion = CGRect(x: margin, y: originY + spacingBetweenTitleAndText + titleSize.height, width: textRegionWidth, height: messageSize.height)
    
         return (titleRegion, messageRegion)
-    }
-    
-    private func dismiss() {
-        UIView.animate(withDuration: CTGlobalConstants.DefaultAnimationDuration, animations: { () -> Void in
-            self.alpha = 0
-        }, completion: { (finished) -> Void in
-            self.removeFromSuperview()
-            self.dismissHandler?()
-        })
     }
     
     // MARK: Overridden methods

@@ -9,7 +9,7 @@
 import UIKit
 
 /// A class that highligts a given view in the layout
-@objc public class CTShowcaseView: UIView {
+@objc open class CTShowcaseView: UIView {
 
     private struct CTGlobalConstants {
         static let DefaultAnimationDuration = 0.5
@@ -161,7 +161,7 @@ import UIKit
         }
     }
 
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         setup(for: targetView!, offset: targetOffset, margin: targetMargin)
     }
     
@@ -224,7 +224,7 @@ import UIKit
         }
     }
     
-    public func dismiss() {
+    open func dismiss() {
         UIView.animate(withDuration: CTGlobalConstants.DefaultAnimationDuration, animations: { () -> Void in
             self.alpha = 0
         }, completion: { (finished) -> Void in
@@ -276,7 +276,7 @@ import UIKit
     
     // MARK: Overridden methods
     
-    override public func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         super.draw(rect)
         
         guard let ctx = UIGraphicsGetCurrentContext() else {return}
@@ -285,7 +285,7 @@ import UIKit
         highlighter.draw(on: ctx, rect: targetRect)
     }
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         // Don't do anything unless the bounds have changed
@@ -298,7 +298,7 @@ import UIKit
         previousSize = bounds.size
     }
     
-    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismiss()
     }
     

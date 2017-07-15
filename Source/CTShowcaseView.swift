@@ -230,6 +230,7 @@ import UIKit
         }, completion: { (finished) -> Void in
             self.removeFromSuperview()
             self.dismissHandler?()
+            self.dismissHandler = nil
         })
     }
 

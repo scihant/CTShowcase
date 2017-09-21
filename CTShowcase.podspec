@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "CTShowcase"
-  s.version          = "2.1.1"
+  s.version          = "2.2.0"
   s.summary          = "Highlight individual views in your app using static or dynamic effects."
   s.homepage         = "https://github.com/scihant/CTShowcase"
   s.screenshots      = "https://s3.amazonaws.com/tek-files/static.png", "https://s3.amazonaws.com/tek-files/dynamic_rect.gif", "https://s3.amazonaws.com/tek-files/dynamic_circle.gif"

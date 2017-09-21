@@ -38,7 +38,8 @@ import UIKit
 }
 
 /// Provides a dynamic glow highlight with animation
-@objc public class CTDynamicGlowHighlighter: NSObject, CTRegionHighlighter {
+@objcMembers
+public class CTDynamicGlowHighlighter: NSObject, CTRegionHighlighter {
     
 // MARK: Properties
     
@@ -138,7 +139,8 @@ import UIKit
 }
 
 /// Provides a static glow highlight with no animation
-@objc public class CTStaticGlowHighlighter: NSObject, CTRegionHighlighter {
+@objcMembers
+public class CTStaticGlowHighlighter: NSObject, CTRegionHighlighter {
     
 // MARK: Properties
     

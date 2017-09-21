@@ -9,7 +9,8 @@
 import UIKit
 
 /// A class that highligts a given view in the layout
-@objc open class CTShowcaseView: UIView {
+@objcMembers
+open class CTShowcaseView: UIView {
 
     private struct CTGlobalConstants {
         static let DefaultAnimationDuration = 0.5
@@ -304,7 +305,7 @@ import UIKit
     
     // MARK: Notification handler
     
-    public func enteredForeground() {
+    @objc public func enteredForeground() {
         updateEffectLayer()
     }
 }

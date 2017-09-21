@@ -11,8 +11,10 @@ CTShowcase is a showcase library for iOS that lets you to highlight individual v
 
 CTShowcase can be used both from Objective-C and Swift code.
 
-v1.0 supports the Swift 2.2 syntax.
+v1.0 supports the Swift 2.2 syntax
+
 v2.0+ requires Swift 3 and Xcode 8
+
 v2.2+ requires Swift 4 and Xcode 9
 
 This document shows examples using the latest version of the library.

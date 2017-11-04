@@ -25,7 +25,7 @@ This document shows examples using the latest version of the library.
 
 To install CTShowcase using [Carthage](https://github.com/Carthage/Carthage), add the folowing line into your Cartfile:
 
-	github "CTShowcase/CTShowcase" ~> 2.2
+	github "scihant/CTShowcase" ~> 2.2
 
 Then run the `carthage update` command to build the framework and drag the built `CTShowcase.framework` into your XCode project.
 

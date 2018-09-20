@@ -100,7 +100,7 @@ open class CTShowcaseView: UIView {
         messageLabel.text = message
         addSubview(messageLabel)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(CTShowcaseView.enteredForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CTShowcaseView.enteredForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -208,8 +208,8 @@ open class CTShowcaseView: UIView {
         containerView.addSubview(self)
         
         let views = ["self": self]
-        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "|[self]|", options: NSLayoutFormatOptions(), metrics: nil, views: views)
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|[self]|", options: NSLayoutFormatOptions(), metrics: nil, views: views)
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "|[self]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|[self]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: views)
         containerView.addConstraints(constraints)
         
         // Show the showcase with a fade-in animation

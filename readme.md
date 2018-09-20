@@ -7,41 +7,39 @@
 
 CTShowcase is a showcase library for iOS that lets you to highlight individual views in your app using static or dynamic effects.
 
-## Compatibility
+### Compatibility
 
 CTShowcase can be used both from Objective-C and Swift code.
 
-v1.0 supports the Swift 2.2 syntax
-
 v2.0+ requires Swift 3 and Xcode 8
-
 v2.2+ requires Swift 4 and Xcode 9
+v2.3+ requires Swift 4.2 and Xcode 10
 
 This document shows examples using the latest version of the library.
 
 ## Installation
 
-### Using Carthage
+#### Using Carthage
 
 To install CTShowcase using [Carthage](https://github.com/Carthage/Carthage), add the folowing line into your Cartfile:
 
-	github "scihant/CTShowcase" ~> 2.2
+	github "CTShowcase/CTShowcase" ~> 2.3
 
 Then run the `carthage update` command to build the framework and drag the built `CTShowcase.framework` into your XCode project.
 
-### Using CocoaPods
+#### Using CocoaPods
 
 To install CTShowcase using [CocoaPods](http://cocoapods.org), add the following line into your Podfile:
 
-    pod "CTShowcase", "~> 2.2"
+    pod "CTShowcase", "~> 2.3"
 
 Then run the `pod install` command and use the created workspace to open your project from now on.  
 
-### Manual Install
+#### Manual Install
 
 Just add the files `CTShowcaseView.swift` and `CTRegionHighlighter.swift` to your project
 
-### Running the Example project
+#### Running the Example project
 
 The example project is located in the Example directory. The framework target is already added as a dependency to it therefore you can run it directly. 
 

@@ -14,6 +14,7 @@ CTShowcase can be used both from Objective-C and Swift code.
 v2.0+ requires Swift 3 and Xcode 8
 v2.2+ requires Swift 4 and Xcode 9
 v2.3+ requires Swift 4.2 and Xcode 10
+v2.4+ requires Swift 5.0 and Xcode 10.2
 
 This document shows examples using the latest version of the library.
 
@@ -23,7 +24,7 @@ This document shows examples using the latest version of the library.
 
 To install CTShowcase using [Carthage](https://github.com/Carthage/Carthage), add the folowing line into your Cartfile:
 
-	github "CTShowcase/CTShowcase" ~> 2.3
+	github "CTShowcase/CTShowcase" ~> 2.4
 
 Then run the `carthage update` command to build the framework and drag the built `CTShowcase.framework` into your XCode project.
 
@@ -31,7 +32,7 @@ Then run the `carthage update` command to build the framework and drag the built
 
 To install CTShowcase using [CocoaPods](http://cocoapods.org), add the following line into your Podfile:
 
-    pod "CTShowcase", "~> 2.3"
+    pod "CTShowcase", "~> 2.4"
 
 Then run the `pod install` command and use the created workspace to open your project from now on.  
 

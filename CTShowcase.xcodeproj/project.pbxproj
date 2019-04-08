@@ -104,23 +104,24 @@
 		CFF5284F1E472412008ED7E6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = scihant;
 				TargetAttributes = {
 					CFF528571E472412008ED7E6 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 38P3Q4228V;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = CFF528521E472412008ED7E6 /* Build configuration list for PBXProject "CTShowcase" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CFF5284E1E472412008ED7E6;
 			productRefGroup = CFF528591E472412008ED7E6 /* Products */;
@@ -291,7 +292,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -311,7 +312,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.scihant.CTShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

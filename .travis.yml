@@ -1,9 +1,9 @@
 reference: http://www.objc.io/issue-6/travis-ci.html
 language: objective-c
-osx_image: xcode10
-xcode_sdk: iphonesimulator12
+osx_image: xcode10.2
+xcode_sdk: iphonesimulator12.2
 cache: bundler
 before_install:
-    - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+    - gem install xcpretty --no-document --quiet
 script:
     - xcodebuild -project 'Example/Example.xcodeproj' -scheme Example -sdk iphonesimulator | xcpretty
